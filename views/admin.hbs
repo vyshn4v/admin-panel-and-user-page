@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row justify-content-between text-center pt-3">
+        <a href="/admin/add-user" type="button" class="btn btn-primary btn-lg btn-block mb-3">Add user</a>
+        {{#if message}}
+        <div class="w-100 alert alert-warning" role="alert">{{message}}
+        </div>
+        {{/if}}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                <div id="{{this._id}}" class=""></div>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>{{this.firstName}} {{this.lastName}}</td>
+                    <td>{{this.email}}</td>
+                    <td>
+                        <a href="/admin/deleteUser/{{this._id}}" class="btn m-1 btn-danger" onclick="return deleteProduct('{{this._id}}')"><i
+                                class="fa-sharp fa-solid fa-trash"></i></a>
+                        <a href="/admin/edit-user/{{this._id}}" type="button" class="btn m-1 btn-warning"><i
+                                class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+                {{!-- <div class="shadow col-xl-5 col-sm-5 col-12 mb-4">
+                    <div class=" rounded py-5 px-4">
+                        <div id="{{this._id}}" class=""></div>
+                        <h5 class="mb-0">jdj</h5>
+                        <span class="small text-uppercase text-muted">j</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <button class="btn m-1 btn-danger" onclick="deleteProduct('{{this._id}}')">Delete</button>
+                            <a href="/admin/edit-user/{{this._id}}" type="button" class="btn m-1 btn-warning">edit</a>
+                        </ul>
+                    </div>
+                </div> --}}
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    function deleteProduct(id) {
+        const warning = document.getElementById(id)
+        if (confirm("delete this product")) {
+           return true
+        }
+        return false
+        /*warning.innerHTML = `
+        <div class="alert alert-danger" role="alert">delete product
+        <button class="btn m-1 btn-danger" onclick="">Delete</button>
+        <button class="btn m-1 btn-success" onclick="clearDeleteMessage('${id}')">cancel</button>
+        </div>`
+        setTimeout(() => {
+            warning.innerHTML = ""
+        }, 5000)*/
+    }
+    function clearDeleteMessage(id) {
+        const warning = document.getElementById(id)
+        warning.innerHTML = "";
+    } 
+</script>
+<link rel="stylesheet" href="/css/adminHome.css">

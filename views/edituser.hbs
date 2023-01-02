@@ -1,0 +1,84 @@
+<!-- Section: Design Block -->
+<section class="bg-white vh-100">
+    <!-- Background image -->
+    <div class="container h-100 d-flex justify-content-center align-items-center">
+
+        <div class="card w-100 mx-4 mx-md-5 shadow text-dark" style="
+        margin-top: -100px;
+        background: hsla(0, 0%, 100%, 0.172);
+        backdrop-filter: blur(30px);
+        ">
+            <div class="card-body py-5 px-md-5">
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="d-flex justify-content-center fw-bold mb-5">Edit user</h2>
+                        <div id="errorMessage">
+                            {{#if error}}
+                            <div class="alert alert-warning" role="alert">{{error}}
+                                <div class="close" style="cursor:pointer" onclick="clearErrorMessage()">X</div>
+                            </div>
+                            {{/if}}
+                        </div>
+                        <form id="form" action="/admin/edit-user/{{id}}" method="post">
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <div class="form-outline">
+                                        <input type="text" name="firstName" value="{{user.firstName}}" id="firstName" class="form-control" />
+                                        <label class="form-label pt-2" for="firstName">First name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <div class="form-outline">
+                                        <input type="text" value="{{user.lastName}}" name="lastName" id="lastName" class="form-control" />
+                                        <label class="form-label pt-2" for="lastName">Last name</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Email input -->
+                            <div class="form-outline mb-1">
+                                <input type="email" name="email" value="{{user.email}}" id="email" class="form-control" />
+                                <label class="form-label pt-2" for="email">Email address</label>
+                            </div>
+
+                            <!-- Password input -->
+                            {{!-- <div class="form-outline mb-1">
+                                <input type="password" name="password" id="password" class="form-control" />
+                                <label class="form-label pt-2" for="password">Password</label>
+                            </div>
+                            <div class="form-outline mb-1">
+                                <input type="password" name="confirmPassword" id="confirmPassword"
+                                    class="form-control" />
+                                <label class="form-label pt-2" for="confirmPassword">Password</label><br>
+                                <input type="checkbox" name="showPassword" id="showPassword" class="" />
+                                <label class="form-label pt-2" for="confirmPassword">Show Password</label>
+                            </div> --}}
+                            <input type="text" value="user" name="role" id="showRole" class="" hidden />
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-1">
+                                Proceed
+                            </button>
+                            {{!-- <div class=" mb-1">
+                                <div>
+                                    <label class="form-label pt-2"> have an account? </label>
+                                    <a href="/login" class="form-label pt-2 text-white" style="cursor: pointer;">Login
+                                    </a>
+                                </div>
+                                <div>
+                                    <label class="form-label pt-2"> are you admin? </label>
+                                    <a href="/admin/signup" class="form-label pt-2 text-white"
+                                        style="cursor: pointer;">register
+                                    </a>
+                                </div>
+                            </div> --}}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/javascripts/userSignupValidation.js"></script>
+<!-- Section: Design Block -->

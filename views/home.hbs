@@ -1,0 +1,40 @@
+<section class="home">
+    {{#each products}}
+    <div class="pt-3">
+        <div class="card" style="width: 18rem;">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</section>
+<style>
+    .home{
+       display: grid;
+       justify-content: center;
+       grid-template-columns: repeat(4,auto);
+       grid-gap: 10px;
+    }
+    @media (max-width:1200px){
+        .home{
+            grid-template-columns: repeat(3,auto);
+        }
+    }
+     @media (max-width:900px){
+        .home{
+            grid-template-columns: repeat(2,auto);
+        }
+    }
+     @media (max-width:602px){
+        .home{
+            grid-template-columns: repeat(1,auto);
+        }
+    }
+</style>

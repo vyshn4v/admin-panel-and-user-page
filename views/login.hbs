@@ -24,17 +24,17 @@
                             <!-- 2 column grid layout with text inputs for the first and last names -->
                             <!-- Email input -->
                             <div class="form-outline mb-1">
-                                <input type="email" value="abcdefg@gamil.com" name="email" id="email" class="form-control" />
+                                <input type="email" name="email" id="email" class="form-control" />
                                 <label class="form-label pt-2" for="email">Email address</label>
                             </div>
-
+                            
                             <!-- Password input -->
                             <div class="form-outline mb-1">
-                                <input type="password" value="vyshnav@12345" name="password" id="password" class="form-control" />
+                                <input type="password" name="password" id="password" class="form-control" />
                                 <label class="form-label pt-2" for="password">Password</label>
                                 <div>
                                     <input type="checkbox" name="showPassword" id="showPassword" class="" />
-                                    <label class="form-label pt-2" for="confirmPassword">Show Password</label>
+                                    <label class="form-label pt-2" for="showpassword">Show Password</label>
                                 </div>
                             </div>
 
@@ -42,21 +42,21 @@
                             <button type="submit" class="btn btn-primary btn-block mb-1">
                                 Login
                             </button>
-                            <div class=" mb-1">
-                                <div>
-                                    <label class="form-label pt-2" for="confirmPassword">don't have an account? </label>
-                                    <a href="/signup">
-                                        <label class="form-label pt-2 text-white" style="cursor: pointer;"
-                                            for="confirmPassword">Signup</label>
-                                    </a>
-                                </div>
-                            </div>
                         </form>
+                        <div class=" mb-1">
+                            <div>
+                                <label class="form-label pt-2">don't have an account? </label>
+                                <a href="/signup">
+                                    <label class=" pt-2" style="cursor: pointer;"
+                                        >Signup</label>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<script src="/javascripts/userLoginValidation.js"></script>
+<script src="javascripts/userLoginValidation.js"></script>
 <!-- Section: Design Block -->

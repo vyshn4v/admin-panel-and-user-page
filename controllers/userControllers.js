@@ -1,18 +1,24 @@
 const user = require('../models/user')
+const bcrypt = require('bcrypt')
 const AddUser = ({ firstName, lastName, email, role, password }) => {
-    return new Promise(async (resolve, reject) => {
-        const newUser = await user({
-            firstName,
-            lastName,
-            email,
-            password,
-            role
+    return new Promise((resolve, reject) => {
+        bcrypt.hash(password, 10).then(async (result) => {
+            try {
+                password = result
+                const newUser = await user({
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                    role
+                })
+                resolve(newUser.save());
+            } catch (err) {
+                reject(err);
+            }
+        }).catch((err) => {
+            reject(err)
         })
-        try {
-            resolve(newUser.save());
-        } catch (err) {
-            reject(err);
-        }
     })
 }
 
@@ -20,11 +26,22 @@ const AddUser = ({ firstName, lastName, email, role, password }) => {
 const findUser = ({ email, password }) => {
     return new Promise((resolve, reject) => {
         try {
+            console.log("email : " + email + "password" + password);
             user.findOne({ email: email }).then((user) => {
-                if (user?.password === password) {
-                    resolve(user)
+                console.log(user);
+                if (user) {
+                    bcrypt.compare(password, user.password).then((status) => {
+                        if (status) {
+                            resolve(user)
+                        } else {
+                            reject()
+                        }
+                    }).catch(() => {
+                        reject()
+                    })
+                } else {
+                    reject()
                 }
-                reject()
             })
         } catch (err) {
             reject(err)
@@ -35,8 +52,8 @@ const findUser = ({ email, password }) => {
 const findAllUsers = () => {
     return new Promise((resolve, reject) => {
         try {
-            user.find({ role:"user" }).then((users) => {
-                if (user) {
+            user.find({role:"user"}).then((users) => {
+                if (users) {
                     resolve(users)
                 }
                 reject()
@@ -46,12 +63,12 @@ const findAllUsers = () => {
         }
     })
 }
-const findUserWithName=({firstName})=>{
+const findUserWithName = ({ firstName }) => {
     return new Promise((resolve, reject) => {
         try {
-            user.find({firstName:new RegExp(firstName), role:"user" }).then((users) => {
+            user.find({ firstName: new RegExp(firstName), role: "user" }).then((users) => {
                 if (users) {
-                    resolve(users) 
+                    resolve(users)
                 }
                 reject()
             })
@@ -60,11 +77,11 @@ const findUserWithName=({firstName})=>{
         }
     })
 }
-const deleteUserWithId=({id})=>{
-    return new Promise((resolve,reject)=>{
-        user.deleteOne({_id:id}).then((result)=>{
+const deleteUserWithId = ({ id }) => {
+    return new Promise((resolve, reject) => {
+        user.deleteOne({ _id: id }).then((result) => {
             resolve(result)
-        }).catch((err)=>{
+        }).catch((err) => {
             reject(err)
         })
     })

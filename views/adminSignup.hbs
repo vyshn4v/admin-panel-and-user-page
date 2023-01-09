@@ -8,7 +8,7 @@
         background: hsla(0, 0%, 100%, 0.172);
         backdrop-filter: blur(30px);
         ">
-            <div class="card-body py-5 px-md-5 ">
+            <div class="card-body py-5 px-md-5">
 
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
@@ -20,7 +20,7 @@
                             </div>
                             {{/if}}
                         </div>
-                        <form id="form" action="/signup" method="post">
+                        <form id="form" action="/admin/signup" method="post">
                             <!-- 2 column grid layout with text inputs for the first and last names -->
                             <div class="row">
                                 <div class="col-md-6 mb-1">
@@ -55,7 +55,7 @@
                                 <input type="checkbox" name="showPassword" id="showPassword" class="" />
                                 <label class="form-label pt-2" for="confirmPassword">Show Password</label>
                             </div>
-                            <input type="text" value="user" name="role" id="showRole" class="" hidden />
+                            <input type="text" value="admin" name="role" id="showRole" class="" hidden />
                             <!-- Submit button -->
                             <button type="submit" class="btn btn-primary btn-block mb-1">
                                 Sign up
@@ -63,7 +63,7 @@
                             <div class=" mb-1">
                                 <div>
                                     <label class="form-label pt-2"> have an account? </label>
-                                    <a href="/login" class="form-label pt-2" style="cursor: pointer;">Login
+                                    <a href="/admin/login" class="form-label pt-2" style="cursor: pointer;">Login
                                     </a>
                                 </div>
                                 <div>

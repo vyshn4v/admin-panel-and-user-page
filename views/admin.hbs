@@ -8,7 +8,7 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">sl.No</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Handle</th>
@@ -18,7 +18,7 @@
                 {{#each users}}
                 <div id="{{this._id}}" class=""></div>
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">{{inc @index}}</th>
                     <td>{{this.firstName}} {{this.lastName}}</td>
                     <td>{{this.email}}</td>
                     <td>
